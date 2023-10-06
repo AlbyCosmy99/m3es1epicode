@@ -31,6 +31,50 @@ ESERCIZIO 12) Crea un selettore per selezionare il secondo link del footer
 
 <head>
     <style>
+        /* 1 */
+        div.jumbotron div h1{
+            color: blueviolet;
+        }
+        /* 2 */
+        nav > * {
+            color: green;
+        }
+        /* 3 */
+        div.jumbotron a {
+            color: aqua;
+        }
+        /* 4 */
+        div.row div.col-md-6:first-child{
+            background-color: aqua;
+        }
+        /* 5 */
+        .blog-post hr:first-of-type {
+            border: 5px solid red;
+        }
+        /* 6 */
+        nav span:nth-of-type(even) {
+            color: pink;
+        }
+        /* 7 */
+        .blog-sidebar ol:first-of-type li a{
+            color: pink;
+        }
+        /* 8 */
+        .blog-post:nth-of-type(2) p:first-of-type a{
+            color: brown;
+        }
+        /* 10 */
+        footer + a {
+            color: chartreuse;
+            }
+        /* 11 */
+        nav:last-of-type a:last-of-type {
+            color: grey;
+        }
+        /* 12 */
+        footer a:nth-of-type(2) {
+            color: blueviolet;
+        }
 
     </style>
     <meta charset="utf-8" />
@@ -116,7 +160,7 @@ ESERCIZIO 12) Crea un selettore per selezionare il secondo link del footer
                     del lettore. Devi riassumere le informazioni decisive per far capire subito l’argomento.
                 </p>
                 <p class="lead mb-0">
-                    <a href="#" class="font-weight-bold">Continua a leggere...</a>
+                    <a href="#" class="font-weight-bold" onclick="onContinueReading()">Continua a leggere...</a>
                 </p>
             </div>
         </div>
@@ -181,7 +225,7 @@ ESERCIZIO 12) Crea un selettore per selezionare il secondo link del footer
                 <div class="blog-post">
                     <h2 class="blog-post-title">Esempio di blog post</h2>
                     <p class="blog-post-meta">
-                        1 gennaio 2020 di <a href="#">Marco</a>
+                        1 gennaio 2020 di <a href="#" onmouseover="viewAuthor('Marco')">Marco</a>
                     </p>
 
                     <p>
@@ -266,7 +310,7 @@ ESERCIZIO 12) Crea un selettore per selezionare il secondo link del footer
                 <div class="blog-post">
                     <h2 class="blog-post-title">Ancora un blog post</h2>
                     <p class="blog-post-meta">
-                        23 dicembre 2019 di <a href="#">Iacopo</a>
+                        23 dicembre 2019 di <a href="#" onmouseover="viewAuthor('Iacopo')">Iacopo</a>
                     </p>
 
                     <p>
@@ -300,7 +344,7 @@ ESERCIZIO 12) Crea un selettore per selezionare il secondo link del footer
                 <div class="blog-post">
                     <h2 class="blog-post-title">Nuove funzionalità</h2>
                     <p class="blog-post-meta">
-                        14 dicembre 2019 di <a href="#">Christian</a>
+                        14 dicembre 2019 di <a href="#" onmouseover="viewAuthor('Christian')">Christian</a>
                     </p>
 
                     <p>
@@ -391,9 +435,20 @@ ESERCIZIO 12) Crea un selettore per selezionare il secondo link del footer
     <a href="#" class="float-right mb-3 mr-3">Torna su</a>
     <script>
         // EXTRA Crea con JavaScript la funzionalità per rimuovere il link "twitter" sotto alla sezione "Altro" nell'elemento "aside". Deve avvenire al caricamento della pagina, automticamente.
+        window.onload = function() {
+            let link = document.querySelector('.list-unstyled:last-of-type li:nth-of-type(2) a')
+            link.style.display = 'none'
+            console.log(link) //e' errato
+        }
         // EXTRA Crea con JavaScript la funzionalità per rimuovere il corrispondente elemento padre dal DOM cliccando sul link "Continua a leggere".
+        function onContinueReading() {
+            let link = document.querySelector('.jumbotron:first-of-type')
+            link.style.display = 'none'
+        }
         // EXTRA Crea con JavaScript la funzionalità per creare un alert col nome dell'autore ogni volta che il cursore passa sopra l'autore del post.
-
+        function viewAuthor(author) {
+            alert(author)
+        }
     </script>
 </body>
 
